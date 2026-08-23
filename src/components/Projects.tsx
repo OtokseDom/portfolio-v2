@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, Images } from 'lucide-react'
+import { ArrowUpRight, Images, Lock } from 'lucide-react'
 import { PROJECTS } from '../utils/data'
 import type { Project } from '../utils/data'
 import { renderRich } from '../utils/text'
@@ -112,14 +112,26 @@ function ProjectCard({ project, onOpenGallery }: { project: Project; onOpenGalle
 
         {/* Actions */}
         <div className="mt-auto grid gap-2 pt-5">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-between gap-2 border-4 border-ink bg-paper px-4 py-2.5 font-heading text-xs font-extrabold uppercase tracking-widest text-ink transition-colors duration-200 hover:bg-ink hover:text-paper"
-          >
-            View Project Repo <ArrowUpRight size={16} />
-          </a>
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between gap-2 border-4 border-ink bg-paper px-4 py-2.5 font-heading text-xs font-extrabold uppercase tracking-widest text-ink transition-colors duration-200 hover:bg-ink hover:text-paper"
+            >
+              View Project Repo <ArrowUpRight size={16} />
+            </a>
+          ) : (
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              title="This repository is private"
+              className="inline-flex cursor-not-allowed select-none items-center justify-between gap-2 border-4 border-ink bg-paper px-4 py-2.5 font-heading text-xs font-extrabold uppercase tracking-widest text-neutral-400"
+            >
+              Project Repo Is Private <Lock size={16} />
+            </button>
+          )}
           <button
             type="button"
             onClick={onOpenGallery}

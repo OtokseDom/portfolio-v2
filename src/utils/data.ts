@@ -171,7 +171,8 @@ export interface Project {
 	image: string;
 	imageAlt: string;
 	screenshots: string[];
-	link: string;
+	/** null → repo is private/unavailable; card renders a disabled state */
+	link: string | null;
 }
 
 export const PROJECTS: Project[] = [
@@ -202,7 +203,7 @@ export const PROJECTS: Project[] = [
 		image: "https://picsum.photos/seed/researchsys/800/520",
 		imageAlt: "Research management system dashboard placeholder",
 		screenshots: shots("researchsys"),
-		link: CONTACT.github, // TODO: repo URL will follow
+		link: null, // repository is private
 	},
 	{
 		title: "Tourism Web App",
@@ -215,7 +216,7 @@ export const PROJECTS: Project[] = [
 		image: "https://picsum.photos/seed/tourismapp/800/520",
 		imageAlt: "Tourism web app interface placeholder",
 		screenshots: shots("tourismapp"),
-		link: CONTACT.github, // TODO: repo URL will follow
+		link: "https://github.com/OtokseDom/lakbay-agapay",
 	},
 	{
 		title: "Event Attendance System",
@@ -231,7 +232,7 @@ export const PROJECTS: Project[] = [
 		image: "https://picsum.photos/seed/eventattendance/800/520",
 		imageAlt: "Event attendance system interface placeholder",
 		screenshots: shots("eventattendance"),
-		link: CONTACT.github, // TODO: repo URL will follow
+		link: "https://github.com/OtokseDom/school-event-attendance-system",
 	},
 ];
 
