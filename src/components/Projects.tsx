@@ -22,7 +22,7 @@ export function Projects() {
         <SectionHeading
           index="03"
           title="Projects"
-          sub="Shipped, led, and defended — every card carries its measurable outcome."
+          sub="Shipped, led, and defended. Every card carries its impact."
         />
 
         <motion.div

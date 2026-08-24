@@ -54,25 +54,25 @@ export const SKILLS: Skill[] = [
 	{
 		name: "PHP · Laravel · CodeIgniter",
 		category: "BACKEND",
-		context: "RMS on CodeIgniter, Task App & Spread Tech services on Laravel — Eloquent, migrations, queues.",
+		context: "RMS on CodeIgniter, Task App & Spread Tech services on Laravel: Eloquent, migrations, queues.",
 		icon: Code2,
 	},
 	{
 		name: "React + TypeScript",
 		category: "FRONTEND",
-		context: "SPAs incl. this portfolio — strongly-typed, component-driven UIs.",
+		context: "SPAs incl. this portfolio: strongly-typed, component-driven UIs.",
 		icon: Atom,
 	},
 	{
 		name: "Next.js",
 		category: "META-FRAMEWORK",
-		context: "App Router, SSR/SSG fundamentals — powering my next wave of builds.",
+		context: "App Router, SSR/SSG fundamentals, powering my next wave of builds.",
 		icon: Triangle,
 	},
 	{
 		name: ".NET (Core · C# · VB.NET)",
 		category: "DESKTOP / BACKEND",
-		context: "Internal tooling and the Event Attendance System — foundational .NET training.",
+		context: "Internal tooling and the Event Attendance System. My foundational .NET training.",
 		icon: SquareTerminal,
 	},
 	{
@@ -102,7 +102,7 @@ export const SKILLS: Skill[] = [
 	{
 		name: "Team Leadership",
 		category: "PEOPLE",
-		context: "Led 4 developers to ship a copyrighted production system.",
+		context: "Led 3 developers to ship a copyrighted production system.",
 		icon: Users,
 	},
 	{
@@ -139,7 +139,7 @@ export const STORY_CARDS: StoryCardData[] = [
 	{
 		phase: "BEFORE",
 		title: "Drowning in Paperwork",
-		description: "Research coordinators tracked everything by hand — paper forms, Excel files, endless encoding. One wrong entry meant days of rework.",
+		description: "Research coordinators tracked everything by hand: paper forms, Excel files, endless encoding. One wrong entry meant days of rework.",
 		stat: "~**15 hrs/week** lost to manual tracking",
 		frames: boardFrames(1),
 		imageAlt: "Storyboard frames of research coordinators tracking everything by hand",
@@ -147,15 +147,15 @@ export const STORY_CARDS: StoryCardData[] = [
 	{
 		phase: "THE BUILD",
 		title: "Architecting the Fix",
-		description: "I architected a Laravel + MySQL platform from scratch and led a team of 4 developers to ship it — requirements through deployment.",
-		stat: "**4 devs led** · full production rollout",
+		description: "I architected a Laravel + MySQL platform from scratch and led a team of 3 developers through its final push to launch and beyond.",
+		stat: "**3 devs led** · full production rollout",
 		frames: boardFrames(2),
 		imageAlt: "Storyboard frames of architecting and building the platform with a team",
 	},
 	{
 		phase: "AFTER",
 		title: "95% Less Busywork",
-		description: "What took a week now takes minutes. The coordinator got her schedule back — and the system earned a registered copyright.",
+		description: "What took a week now takes minutes. The coordinator got her schedule back, and the system earned a registered copyright.",
 		stat: "**95% workload reduction** · copyright registered",
 		frames: boardFrames(3),
 		imageAlt: "Storyboard frames of the finished system saving the coordinator's week",
@@ -207,7 +207,11 @@ export const PROJECTS: Project[] = [
 		year: "2024",
 		role: "Solo Build",
 		tags: ["Laravel", "React", "TypeScript", "MySQL", "RBAC"],
-		impact: ["Kanban board with drag-and-drop and **role-based access control**", "Built for personal use — **deployed live** and running today"],
+		impact: [
+			"Served as our team's **live task tracker**, keeping tasks and progress in one place",
+			"Other developers built **their own versions** from my hosted codebase",
+			"Sharpened my **planning and execution** through hands-on agile development",
+		],
 		image: pmShots[0],
 		imageAlt: "Task management app dashboard screenshot",
 		screenshots: pmShots,
@@ -217,12 +221,13 @@ export const PROJECTS: Project[] = [
 		title: "Research Management System",
 		status: "COPYRIGHTED",
 		badgeClass: "bg-accent text-paper",
-		year: "2023 – 2024",
-		role: "Tech Lead · 4 Devs",
+		year: "2023 to 2024",
+		role: "Tech Lead · 3 Devs",
 		tags: ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
 		impact: [
-			"Cut coordinator workload by **95%** — weeks of encoding down to minutes",
-			"Led a team of **4 developers**; system registered with a **copyright**",
+			"**Adopted university-wide** by faculties and students for daily research operations",
+			"Digitalized **research archiving**, cutting coordinator workload by **95%**",
+			"Earned a **registered copyright**, recognized as original work",
 		],
 		image: rmsShots[0],
 		imageAlt: "Research management system screenshot",
@@ -236,7 +241,11 @@ export const PROJECTS: Project[] = [
 		year: "2023",
 		role: "Capstone Project",
 		tags: ["Laravel", "Bootstrap", "Google Maps API"],
-		impact: ["Interactive destination guides powered by the **Google Maps API**", "Fully **responsive UI**, verified across phones, tablets & desktop"],
+		impact: [
+			"Built in partnership with our **province's tourism department**",
+			"Showcased the province's **hidden gems** to travelers",
+			"Endorsed **local tour operators**, connecting them with more visitors",
+		],
 		image: tourismShots[0],
 		imageAlt: "Tourism web app interface screenshot",
 		screenshots: tourismShots,
@@ -250,7 +259,7 @@ export const PROJECTS: Project[] = [
 		role: "Academic Requirement",
 		tags: ["VB.NET", ".NET", "Desktop App"],
 		impact: [
-			"**Paperless** check-in for school events — replaced passing around manual sheets",
+			"**Paperless** check-in for school events, no more passing around manual sheets",
 			"Auto-generated attendance **reports**, cutting tally time from hours to minutes",
 		],
 		image: eventShots[0],
@@ -274,26 +283,29 @@ export const EXPERIENCE: ExperienceItem[] = [
 	{
 		company: "Spread Technology",
 		role: "Technical Support Analyst",
-		period: "Jul 2024 — Present",
+		period: "Jul 2024 to Present",
 		bullets: [
-			"Design and maintain REST APIs connecting React frontends to Laravel services — **30% faster** client integrations",
+			"Design REST APIs connecting React frontends to Laravel services, delivering **30% faster** client integrations",
+			"Produce **hi-fi UI/UX designs and prototypes** for new features",
+			"Take on **business analysis and team coordination** beyond day-to-day support",
 			"Own production debugging across the full stack; author internal docs now used team-wide",
 		],
 	},
 	{
 		company: "Bicol University",
-		role: "Full Stack Developer — Team Lead",
-		period: "Feb 2023 — Apr 2024",
+		role: "Lead Full Stack Developer",
+		period: "Feb 2023 to Apr 2024",
 		bullets: [
-			"Led **4 developers** delivering the Research Management System (PHP · CodeIgniter)",
-			"Delivered a **95% reduction** in coordinator workload — output **registered copyright**",
+			"Led **3 developers** through the final push to launch and post-production maintenance",
+			"Delivered a **95% reduction** in coordinator workload, earning the system a **registered copyright**",
+			"Achieved **university-wide adoption** by faculties and students",
 		],
 	},
 	{
 		company: "Creative Codes",
 		role: "Junior Programmer Intern",
-		period: "Feb 2019 — Mar 2019",
-		bullets: ["Built internal tools in **VB.NET** and **C#** — foundational .NET training"],
+		period: "Feb 2019 to Mar 2019",
+		bullets: ["Built internal tools in **VB.NET** and **C#**, gaining foundational .NET training"],
 	},
 ];
 
@@ -301,7 +313,7 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const TERMINAL_LINES = [
 	"$ whoami",
-	"JOHN DOMINIC ESCOTO — FULL-STACK DEVELOPER",
+	"JOHN DOMINIC ESCOTO | FULL-STACK DEVELOPER",
 	"$ cat mission.txt",
 	"I build applications that turn complexity into clarity.",
 	"$ ./impact_report --efficiency",

@@ -16,7 +16,7 @@ export function Experience() {
           index="04"
           title="Experience"
           tone="dark"
-          sub="Six years of shipping — from .NET internship to leading a four-dev team."
+          sub="Six years of shipping, from .NET internship to leading production systems."
         />
 
         <ol className="ml-3 max-w-3xl list-none">

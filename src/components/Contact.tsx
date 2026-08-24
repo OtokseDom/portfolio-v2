@@ -118,7 +118,7 @@ export function Contact() {
                 Send a message<span className="text-accent">.</span>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                Roles, projects, or questions — it lands straight in my inbox.
+                Roles, projects, or questions: it lands straight in my inbox.
               </p>
 
               <div className="mt-6 grid gap-5">
@@ -148,17 +148,17 @@ export function Contact() {
                 {/* Status banners */}
                 {state === 'sent' && (
                   <p role="status" className="border-4 border-ink bg-accent px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-paper">
-                    ✔ Message sent — I'll get back to you soon.
+                    ✔ Message sent. I'll get back to you soon.
                   </p>
                 )}
                 {state === 'handoff' && (
                   <p role="status" className="border-4 border-ink bg-paper px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-ink">
-                    ✔ Handed off to your mail app — hit send there.
+                    ✔ Handed off to your mail app. Hit send there.
                   </p>
                 )}
                 {state === 'error' && (
                   <p role="alert" className="border-4 border-paper bg-ink px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-paper">
-                    ✕ Send failed — {feedback} Or reach me directly:{' '}
+                    ✕ Send failed. {feedback} Or reach me directly:{' '}
                     <a href={`mailto:${CONTACT.email}`} className="underline decoration-accent underline-offset-4">
                       {CONTACT.email}
                     </a>

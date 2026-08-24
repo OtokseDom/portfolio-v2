@@ -124,7 +124,7 @@ export function GalleryModal({ project, onClose }: GalleryModalProps) {
 
 					{/* Frame caption */}
 					<span className="absolute bottom-2 left-2 border border-paper/40 bg-ink/80 px-1 py-0.5 font-mono text-[9px] tracking-[0.25em] text-paper/70 sm:left-3 sm:text-[10px]">
-						FIG.{index + 1} — {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+						FIG.{index + 1} · {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
 					</span>
 				</div>
 

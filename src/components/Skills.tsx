@@ -16,7 +16,7 @@ export function Skills() {
         <SectionHeading
           index="02"
           title="Skills"
-          sub="Tools I ship with — hover a tile for where it earned its keep."
+          sub="Tools I ship with. Hover a tile for where it earned its keep."
         />
 
         <motion.ul
@@ -55,7 +55,7 @@ export function Skills() {
         </motion.ul>
 
         <p className="mt-10 font-mono text-xs tracking-wider text-neutral-400">
-          {'// always learning — currently deepening TypeScript, cloud architecture & system design'}
+          {'// always learning: currently deepening TypeScript, cloud architecture & system design'}
         </p>
       </div>
     </section>

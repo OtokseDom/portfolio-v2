@@ -80,7 +80,7 @@ export function HorizontalStory() {
             [ 01 ] THE 95% STORY
           </p>
           <p className="hidden items-center gap-2 font-mono text-xs tracking-widest text-paper/50 lg:flex">
-            KEEP SCROLLING — THE STORY MOVES SIDEWAYS <MoveRight size={14} />
+            KEEP SCROLLING · THE STORY MOVES SIDEWAYS <MoveRight size={14} />
           </p>
           <p aria-hidden className="font-heading text-lg font-extrabold tabular-nums md:text-xl">
             <span className="text-accent">{String(chapter + 1).padStart(2, '0')}</span>
@@ -162,7 +162,7 @@ function StoryPanel({ card, index }: { card: StoryCardData; index: number; total
             ))}
           </div>
           <figcaption className="mt-3 inline-block border-2 border-paper/60 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60">
-            CH.0{index + 1} — {card.phase}
+            CH.0{index + 1} · {card.phase}
           </figcaption>
         </figure>
       </div>
