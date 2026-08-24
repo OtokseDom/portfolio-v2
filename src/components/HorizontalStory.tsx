@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   motion,
   useMotionValueEvent,
@@ -14,14 +14,20 @@ import { renderRich } from '../utils/text'
 
 /**
  * THE 95% STORY — a full-screen pinned panel that hijacks nothing and
- * hides nothing: the section is `panels × 100vh` tall, its inner stage
- * sticks to the viewport, and page scroll drives the stage sideways.
+ * hides nothing: the section is taller than the panels it pins, its
+ * inner stage sticks to the viewport, and page scroll drives the stage
+ * sideways.
  *
- *   scroll down → panels advance left-to-right
- *   scroll up   → they rewind
- * There is no way past it except through the whole story. Works
- * identically on touch (swipe up/down) since it is native scrolling.
+ *   dead zone (¼ screen-height) → story plays → dead zone (¼ screen-height)
+ *
+ * The lead-in lets the reader arrive before anything moves; the tail
+ * holds the finished story before the next section scrolls in.
+ * Each board loops its three storyboard frames as a jump-cut flip-book.
  */
+
+/* Scroll allowance (vh) before/after the horizontal traversal */
+const DEAD_SCROLL_VH = 25
+
 export function HorizontalStory() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const prefersReduced = useReducedMotion()
@@ -35,7 +41,9 @@ export function HorizontalStory() {
   const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 })
 
   const travel = (STORY_CARDS.length - 1) * 100 // vw per full traversal
-  const x = useTransform(smooth, [0, 1], ['0vw', `${-travel}vw`])
+  const deadZone = DEAD_SCROLL_VH / ((STORY_CARDS.length * 100 + DEAD_SCROLL_VH * 2) - 100)
+  const x = useTransform(smooth, [deadZone, 1 - deadZone], ['0vw', `${-travel}vw`])
+  const storyProgress = useTransform(smooth, [deadZone, 1 - deadZone], [0, 1])
 
   // Active chapter counter (flips exactly at each panel boundary)
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
@@ -62,7 +70,7 @@ export function HorizontalStory() {
       id="story"
       ref={sectionRef}
       className="relative bg-ink text-paper"
-      style={{ height: `${STORY_CARDS.length * 100}vh` }}
+      style={{ height: `${STORY_CARDS.length * 100 + DEAD_SCROLL_VH * 2}vh` }}
     >
       {/* Pinned full-screen stage */}
       <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
@@ -89,7 +97,7 @@ export function HorizontalStory() {
 
         {/* Progress rail */}
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-1.5 overflow-hidden bg-paper/10">
-          <motion.div style={{ scaleX: smooth }} className="h-full w-full origin-left bg-accent" />
+          <motion.div style={{ scaleX: storyProgress }} className="h-full w-full origin-left bg-accent" />
         </div>
       </div>
     </section>
@@ -99,6 +107,16 @@ export function HorizontalStory() {
 /* ── Panel ──────────────────────────────────────────────────────── */
 
 function StoryPanel({ card, index }: { card: StoryCardData; index: number; total: number }) {
+  const prefersReduced = useReducedMotion()
+  const [frame, setFrame] = useState(0)
+
+  // Looping flip-book: hard cut to the next storyboard frame every 2s
+  useEffect(() => {
+    if (prefersReduced) return undefined
+    const id = setInterval(() => setFrame((f) => (f + 1) % card.frames.length), 2000)
+    return () => clearInterval(id)
+  }, [prefersReduced, card.frames.length])
+
   return (
     <article className="relative flex h-full w-screen shrink-0 items-center overflow-hidden">
       {/* Ghost chapter number */}
@@ -131,14 +149,17 @@ function StoryPanel({ card, index }: { card: StoryCardData; index: number; total
 
         {/* Visual */}
         <figure className="relative z-10 m-0">
-          <div className="border-4 border-paper shadow-brutal-accent">
-            <img
-              src={card.image}
-              alt={card.imageAlt}
-              loading="lazy"
-              draggable={false}
-              className={`h-[34vh] w-full object-cover md:h-[46vh] ${card.imageClass}`}
-            />
+          <div className="grid border-4 border-paper shadow-brutal-accent">
+            {card.frames.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={i === frame ? card.imageAlt : ''}
+                aria-hidden={i !== frame}
+                draggable={false}
+                className={`col-start-1 row-start-1 h-[34vh] w-full object-cover md:h-[46vh] ${i === frame ? 'opacity-100' : 'opacity-0'}`}
+              />
+            ))}
           </div>
           <figcaption className="mt-3 inline-block border-2 border-paper/60 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/60">
             CH.0{index + 1} — {card.phase}

@@ -20,6 +20,7 @@ interface GalleryModalProps {
 export function GalleryModal({ project, onClose }: GalleryModalProps) {
 	const [index, setIndex] = useState(0);
 	const total = project.screenshots.length;
+	const mono = project.monochrome ?? false;
 	const touchStartX = useRef<number | null>(null);
 
 	const go = useCallback((dir: 1 | -1) => setIndex((i) => (i + dir + total) % total), [total]);
@@ -100,7 +101,7 @@ export function GalleryModal({ project, onClose }: GalleryModalProps) {
 						src={project.screenshots[index]}
 						alt={`${project.title} screenshot ${index + 1} of ${total}`}
 						draggable={false}
-						className="absolute inset-0 h-full w-full select-none object-contain object-center"
+						className={`absolute inset-0 h-full w-full select-none object-contain object-center ${mono ? "grayscale" : ""}`}
 					/>
 
 					{/* Prev / next */}
@@ -141,7 +142,7 @@ export function GalleryModal({ project, onClose }: GalleryModalProps) {
 								i === index ? "border-accent" : "border-paper/30 hover:border-paper"
 							}`}
 						>
-							<img src={src} alt="" loading="lazy" className={`h-full w-full object-cover ${i === index ? "" : "grayscale hover:grayscale-0"}`} />
+							<img src={src} alt="" loading="lazy" className={`h-full w-full object-cover ${mono ? "grayscale" : i === index ? "" : "grayscale hover:grayscale-0"}`} />
 							<span className="absolute bottom-0 right-0 bg-ink/80 px-1 font-mono text-[8px] text-paper/80 sm:text-[9px]">{i + 1}</span>
 						</button>
 					))}

@@ -71,7 +71,7 @@ function ProjectCard({ project, onOpenGallery }: { project: Project; onOpenGalle
           src={project.image}
           alt={project.imageAlt}
           loading="lazy"
-          className="h-44 w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 xl:h-40"
+          className={`h-44 w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 xl:h-40 ${project.monochrome ? "" : "group-hover:grayscale-0"}`}
         />
         {/* hover affordance for the gallery */}
         <span className="absolute inset-0 grid place-items-center bg-ink/0 opacity-0 transition-all duration-300 group-hover:bg-ink/40 group-hover:opacity-100">

@@ -115,14 +115,24 @@ export const SKILLS: Skill[] = [
 
 /* ── The 95% Story (full-screen pinned horizontal panels) ───────── */
 
+/** Storyboard frames under src/assets/storyboard, resolved by Vite at build time. */
+const BOARD_FRAMES = import.meta.glob<string>("../assets/storyboard/*.jpg", { eager: true, import: "default" });
+
+/** Three frames per board, cycled as a looping flip-book in the panel. */
+const boardFrames = (board: number): string[] =>
+	[1, 2, 3].map((n) => {
+		const src = BOARD_FRAMES[`../assets/storyboard/${board}-${n}.jpg`];
+		if (!src) throw new Error(`Missing storyboard frame: ${board}-${n}.jpg`);
+		return src;
+	});
+
 export interface StoryCardData {
 	phase: "BEFORE" | "THE BUILD" | "AFTER";
 	title: string;
 	description: string;
 	stat: string;
-	image: string;
+	frames: string[];
 	imageAlt: string;
-	imageClass: string;
 }
 
 export const STORY_CARDS: StoryCardData[] = [
@@ -131,34 +141,46 @@ export const STORY_CARDS: StoryCardData[] = [
 		title: "Drowning in Paperwork",
 		description: "Research coordinators tracked everything by hand — paper forms, Excel files, endless encoding. One wrong entry meant days of rework.",
 		stat: "~**15 hrs/week** lost to manual tracking",
-		image: "https://picsum.photos/seed/spreadsheet/1100/700?grayscale",
-		imageAlt: "Placeholder photo representing manual spreadsheet tracking",
-		imageClass: "grayscale contrast-125",
+		frames: boardFrames(1),
+		imageAlt: "Storyboard frames of research coordinators tracking everything by hand",
 	},
 	{
 		phase: "THE BUILD",
 		title: "Architecting the Fix",
 		description: "I architected a Laravel + MySQL platform from scratch and led a team of 4 developers to ship it — requirements through deployment.",
 		stat: "**4 devs led** · full production rollout",
-		image: "https://picsum.photos/seed/architecture/1100/700",
-		imageAlt: "Placeholder photo representing system architecture",
-		imageClass: "saturate-50 contrast-110",
+		frames: boardFrames(2),
+		imageAlt: "Storyboard frames of architecting and building the platform with a team",
 	},
 	{
 		phase: "AFTER",
 		title: "95% Less Busywork",
 		description: "What took a week now takes minutes. The coordinator got her schedule back — and the system earned a registered copyright.",
 		stat: "**95% workload reduction** · copyright registered",
-		image: "https://picsum.photos/seed/dashboard/1100/700",
-		imageAlt: "Placeholder photo representing an analytics dashboard",
-		imageClass: "contrast-110",
+		frames: boardFrames(3),
+		imageAlt: "Storyboard frames of the finished system saving the coordinator's week",
 	},
 ];
 
 /* ── Projects ───────────────────────────────────────────────────── */
 
-/** 6 placeholder screenshots per project for the gallery modal. */
-const shots = (seed: string): string[] => Array.from({ length: 6 }, (_, i) => `https://picsum.photos/seed/${seed}-screen-${i + 1}/1000/625`);
+/** Real screenshots under src/assets/projects, resolved by Vite at build time. */
+const SHOT_FILES = import.meta.glob<string>("../assets/projects/**/*.png", { eager: true, import: "default" });
+
+/** Resolve a folder's screenshots in the given display order. */
+const shots = (folder: string, files: string[]): string[] =>
+	files.map((file) => {
+		const src = SHOT_FILES[`../assets/projects/${folder}/${file}`];
+		if (!src) throw new Error(`Missing screenshot: ${folder}/${file}`);
+		return src;
+	});
+
+const rangeShots = (prefix: string): string[] => Array.from({ length: 6 }, (_, i) => `${prefix}-${i + 1}.png`);
+
+const pmShots = shots("project_management", ["Dashboard.png", "Kanban.png", "Task-List.png", "Calendar.png", "Week-View.png", "Epic.png", "User-Profile.png"]);
+const rmsShots = shots("document_management", rangeShots("Project1"));
+const tourismShots = shots("travel_guide", rangeShots("Project2"));
+const eventShots = shots("event_attendance", rangeShots("Project3"));
 
 export interface Project {
 	title: string;
@@ -171,6 +193,8 @@ export interface Project {
 	image: string;
 	imageAlt: string;
 	screenshots: string[];
+	/** always render images in grayscale */
+	monochrome?: boolean;
 	/** null → repo is private/unavailable; card renders a disabled state */
 	link: string | null;
 }
@@ -184,9 +208,9 @@ export const PROJECTS: Project[] = [
 		role: "Solo Build",
 		tags: ["Laravel", "React", "TypeScript", "MySQL", "RBAC"],
 		impact: ["Kanban board with drag-and-drop and **role-based access control**", "Built for personal use — **deployed live** and running today"],
-		image: "https://picsum.photos/seed/taskboard/800/520",
-		imageAlt: "Task management app interface placeholder",
-		screenshots: shots("taskboard"),
+		image: pmShots[0],
+		imageAlt: "Task management app dashboard screenshot",
+		screenshots: pmShots,
 		link: "https://github.com/OtokseDom/otokse-project-management",
 	},
 	{
@@ -200,9 +224,9 @@ export const PROJECTS: Project[] = [
 			"Cut coordinator workload by **95%** — weeks of encoding down to minutes",
 			"Led a team of **4 developers**; system registered with a **copyright**",
 		],
-		image: "https://picsum.photos/seed/researchsys/800/520",
-		imageAlt: "Research management system dashboard placeholder",
-		screenshots: shots("researchsys"),
+		image: rmsShots[0],
+		imageAlt: "Research management system screenshot",
+		screenshots: rmsShots,
 		link: null, // repository is private
 	},
 	{
@@ -213,9 +237,9 @@ export const PROJECTS: Project[] = [
 		role: "Capstone Project",
 		tags: ["Laravel", "Bootstrap", "Google Maps API"],
 		impact: ["Interactive destination guides powered by the **Google Maps API**", "Fully **responsive UI**, verified across phones, tablets & desktop"],
-		image: "https://picsum.photos/seed/tourismapp/800/520",
-		imageAlt: "Tourism web app interface placeholder",
-		screenshots: shots("tourismapp"),
+		image: tourismShots[0],
+		imageAlt: "Tourism web app interface screenshot",
+		screenshots: tourismShots,
 		link: "https://github.com/OtokseDom/lakbay-agapay",
 	},
 	{
@@ -229,9 +253,10 @@ export const PROJECTS: Project[] = [
 			"**Paperless** check-in for school events — replaced passing around manual sheets",
 			"Auto-generated attendance **reports**, cutting tally time from hours to minutes",
 		],
-		image: "https://picsum.photos/seed/eventattendance/800/520",
-		imageAlt: "Event attendance system interface placeholder",
-		screenshots: shots("eventattendance"),
+		image: eventShots[0],
+		imageAlt: "Event attendance system interface screenshot",
+		screenshots: eventShots,
+		monochrome: false,
 		link: "https://github.com/OtokseDom/school-event-attendance-system",
 	},
 ];
