@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Atom, Cloud, Code2, Database, FileText, GitBranch, SquareTerminal, Triangle, Users, Webhook } from "lucide-react";
+import { Atom, Code2, Container, Database, FileText, GitBranch, SquareTerminal, Triangle, Users, Webhook } from "lucide-react";
 
 /* ════════════════════════════════════════════════════════════════
    SINGLE SOURCE OF TRUTH for all page content.
@@ -15,8 +15,8 @@ export const PROFILE = {
 	name: "John Dominic Escoto",
 	role: "Full-Stack Developer",
 	tagline: "I build systems that save people 95% of their time.",
-	photo: "/transparent-profile.png",
-	cv: "/cv.pdf",
+	photo: `${import.meta.env.BASE_URL}transparent-profile.png`,
+	cv: `${import.meta.env.BASE_URL}cv.pdf`,
 };
 
 export const CONTACT = {
@@ -54,49 +54,49 @@ export const SKILLS: Skill[] = [
 	{
 		name: "PHP · Laravel · CodeIgniter",
 		category: "BACKEND",
-		context: "RMS on CodeIgniter, Task App & Spread Tech services on Laravel: Eloquent, migrations, queues.",
+		context: "Powered a copyrighted, university-wide RMS that cut coordinator workload by 95%.",
 		icon: Code2,
 	},
 	{
 		name: "React + TypeScript",
 		category: "FRONTEND",
-		context: "SPAs incl. this portfolio: strongly-typed, component-driven UIs.",
+		context: "Drives Spread Tech dashboards, my live task app, and this portfolio.",
 		icon: Atom,
 	},
 	{
 		name: "Next.js",
 		category: "META-FRAMEWORK",
-		context: "App Router, SSR/SSG fundamentals, powering my next wave of builds.",
+		context: "Fundamentals locked in, powering my next wave of builds.",
 		icon: Triangle,
 	},
 	{
 		name: ".NET (Core · C# · VB.NET)",
 		category: "DESKTOP / BACKEND",
-		context: "Internal tooling and the Event Attendance System. My foundational .NET training.",
+		context: "Delivered paperless event check-in, cutting tally time from hours to minutes.",
 		icon: SquareTerminal,
 	},
 	{
 		name: "REST APIs",
 		category: "ARCHITECTURE",
-		context: "Designed integrations that cut client onboarding time by 30%.",
+		context: "Designed and consumed API structures that made client integrations 30% faster.",
 		icon: Webhook,
 	},
 	{
 		name: "MySQL / PostgreSQL",
 		category: "DATABASE",
-		context: "Schema design & query tuning on tables with 10k+ records.",
+		context: "Keeps queries fast on tables with 10k+ records.",
 		icon: Database,
 	},
 	{
-		name: "AWS (EC2 / S3)",
-		category: "CLOUD",
-		context: "Deployed Laravel apps; static assets & backups served from S3.",
-		icon: Cloud,
+		name: "Docker",
+		category: "DEPLOYMENT",
+		context: "Containerizes apps for consistent deployments, from my machine to production.",
+		icon: Container,
 	},
 	{
 		name: "Git · GitHub",
 		category: "TOOLING",
-		context: "Feature-branch workflow, code review discipline, mentoring juniors.",
+		context: "Feature-branch discipline and reviews behind a copyrighted production release.",
 		icon: GitBranch,
 	},
 	{
