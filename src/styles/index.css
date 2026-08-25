@@ -87,6 +87,11 @@
 		background-size: 48px 48px;
 	}
 
+	/* Diagonal hatch — placeholder tiles awaiting content */
+	.bg-hatch {
+		background-image: repeating-linear-gradient(45deg, rgba(26, 26, 26, 0.07) 0 2px, transparent 2px 12px);
+	}
+
 	/* Faint blueprint grid — dark sections */
 	.bg-blueprint-dark {
 		background-image:

@@ -6,12 +6,13 @@ import { Skills } from "./components/Skills";
 import { ToolMarquee } from "./components/ToolMarquee";
 import { Projects } from "./components/Projects";
 import { Experience } from "./components/Experience";
+import { Certifications } from "./components/Certifications";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 /**
  * App shell — section order tells the hiring story:
- * who I am → proof (95%) → tools → work → track record → hire me.
+ * who I am → proof (95%) → tools → work → track record → credentials → hire me.
  */
 export default function App() {
 	return (
@@ -36,6 +37,7 @@ export default function App() {
 				<ToolMarquee />
 				<Projects />
 				<Experience />
+				<Certifications />
 				<Contact />
 			</main>
 

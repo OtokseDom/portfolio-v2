@@ -60,9 +60,9 @@ export function Contact() {
     'w-full border-4 border-ink bg-paper px-4 py-3 font-sans text-ink placeholder:text-neutral-400 focus:border-accent focus:shadow-brutal-sm focus:outline-none transition-shadow duration-200'
 
   return (
-    <section id="contact" className="bg-paper py-24">
+    <section id="contact" className="bg-fog py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <SectionHeading index="05" title="Contact" sub="Open to full-stack & frontend roles. I reply fast." />
+        <SectionHeading index="06" title="Contact" sub="Open to full-stack & frontend roles. I reply fast." />
 
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
           {/* ── Left: channels + CV ──────────────────────────────── */}
@@ -113,7 +113,7 @@ export function Contact() {
 
           {/* ── Right: contact form ──────────────────────────────── */}
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="border-4 border-ink bg-fog p-6 shadow-brutal md:p-8">
+            <form onSubmit={handleSubmit} className="border-4 border-ink bg-paper p-6 shadow-brutal md:p-8">
               <h3 className="font-heading text-xl font-extrabold uppercase leading-tight">
                 Send a message<span className="text-accent">.</span>
               </h3>

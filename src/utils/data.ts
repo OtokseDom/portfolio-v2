@@ -37,6 +37,7 @@ export const NAV_LINKS: NavLink[] = [
 	{ label: "SKILLS", href: "#skills" },
 	{ label: "PROJECTS", href: "#projects" },
 	{ label: "EXPERIENCE", href: "#experience" },
+	{ label: "CERTS", href: "#certs" },
 	{ label: "CONTACT", href: "#contact" },
 ];
 
@@ -307,6 +308,34 @@ export const EXPERIENCE: ExperienceItem[] = [
 		period: "Feb 2019 to Mar 2019",
 		bullets: ["Built internal tools in **VB.NET** and **C#**, gaining foundational .NET training"],
 	},
+];
+
+/* ── Certifications (compact horizontal credential wall) ────────── */
+
+/** Certificate scans under src/assets/certifications, resolved by Vite at build time. */
+const CERT_FILES = import.meta.glob<string>("../assets/certifications/*", { eager: true, import: "default" });
+
+/** Resolve a certificate image by filename; null → placeholder tile renders. */
+export const certImage = (file?: string): string | null =>
+	(file && CERT_FILES[`../assets/certifications/${file}`]) || null;
+
+export interface Certification {
+	title: string;
+	/** issuing body — shown as "WHERE" */
+	issuer: string;
+	date: string;
+	/** drop the scan into src/assets/certifications and set its filename here */
+	file?: string;
+}
+
+/* ⚠ PLACEHOLDER ENTRIES — swap in real certificates + attach scans before launch. */
+export const CERTIFICATIONS: Certification[] = [
+	{ title: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", date: "Mar 2025" },
+	{ title: "Meta Front-End Developer", issuer: "Coursera · Meta", date: "Jan 2025" },
+	{ title: "React — The Complete Guide", issuer: "Udemy", date: "Nov 2024" },
+	{ title: "Docker Foundations", issuer: "Docker Inc.", date: "Aug 2024" },
+	{ title: "SQL Advanced Certificate", issuer: "HackerRank", date: "Jun 2024" },
+	{ title: "UI/UX Design Fundamentals", issuer: "Coursera · Google", date: "Feb 2023" },
 ];
 
 /* ── Hero terminal script ───────────────────────────────────────── */
