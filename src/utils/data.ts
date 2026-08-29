@@ -61,7 +61,7 @@ export const SKILLS: Skill[] = [
 	{
 		name: "React + TypeScript",
 		category: "FRONTEND",
-		context: "Drives Spread Tech dashboards, my live task app, and this portfolio.",
+		context: "Drives Project Management dashboards and this portfolio.",
 		icon: Atom,
 	},
 	{
@@ -79,7 +79,7 @@ export const SKILLS: Skill[] = [
 	{
 		name: "REST APIs",
 		category: "ARCHITECTURE",
-		context: "Designed and consumed API structures that made client integrations 30% faster.",
+		context: "Designed and consumed API structures for frontends and Laravel services.",
 		icon: Webhook,
 	},
 	{
@@ -103,13 +103,13 @@ export const SKILLS: Skill[] = [
 	{
 		name: "Team Leadership",
 		category: "PEOPLE",
-		context: "Led 3 developers to ship a copyrighted production system.",
+		context: "Led 3 intern developers and now coordinating an entire team of software engineers",
 		icon: Users,
 	},
 	{
 		name: "Tech Documentation",
 		category: "SUPPORT",
-		context: "Manuals & API docs adopted by non-technical staff.",
+		context: "Manuals & API docs adopted by technical and non-technical staff.",
 		icon: FileText,
 	},
 ];
@@ -148,7 +148,7 @@ export const STORY_CARDS: StoryCardData[] = [
 	{
 		phase: "THE BUILD",
 		title: "Architecting the Fix",
-		description: "I architected a Laravel + MySQL platform from scratch and led a team of 3 developers through its final push to launch and beyond.",
+		description: "I architected a Codeigniter + MySQL platform from scratch and led a team of 3 developers through its final push to launch and beyond.",
 		stat: "**3 devs led** · full production rollout",
 		frames: boardFrames(2),
 		imageAlt: "Storyboard frames of architecting and building the platform with a team",
@@ -286,10 +286,10 @@ export const EXPERIENCE: ExperienceItem[] = [
 		role: "Technical Support Analyst",
 		period: "Jul 2024 to Present",
 		bullets: [
-			"Design REST APIs connecting React frontends to Laravel services, delivering **30% faster** client integrations",
-			"Produce **hi-fi UI/UX designs and prototypes** for new features",
-			"Take on **business analysis and team coordination** beyond day-to-day support",
-			"Own production debugging across the full stack; author internal docs now used team-wide",
+			"Designed REST APIs connecting Frontends to Laravel services, eliminating slow manual integration workflows and delivering **30% faster** client integrations",
+			"Produced hi-fi UI/UX designs and prototypes for new features, reducing developer rework and stakeholder revision cycles to accelerate feature sign-off",
+			"Took on business analysis and team coordination beyond day-to-day support, streamlining cross-functional handoffs and reducing miscommunication to shorten sprint cycles",
+			"Owned full-stack production debugging and authored internal documentation, resolving recurring issues and establishing a team-wide knowledge base that reduced repeat incidents",
 		],
 	},
 	{
@@ -297,16 +297,16 @@ export const EXPERIENCE: ExperienceItem[] = [
 		role: "Lead Full Stack Developer",
 		period: "Feb 2023 to Apr 2024",
 		bullets: [
-			"Led **3 developers** through the final push to launch and post-production maintenance",
-			"Delivered a **95% reduction** in coordinator workload, earning the system a **registered copyright**",
-			"Achieved **university-wide adoption** by faculties and students",
+			"Led 3 developers through the final push to launch and post-production maintenance, navigating tight deadlines to deliver a stable system on schedule",
+			"Delivered the system, replacing fragmented manual processes that consumed coordinator time and earning a **95% reduction** in workload plus a **registered copyright**",
+			"Drove university-wide adoption by faculties and students, consolidating disconnected tools into one unified system that replaced manual workflows and solved coordination gaps",
 		],
 	},
 	{
 		company: "Creative Codes",
 		role: "Junior Programmer Intern",
 		period: "Feb 2019 to Mar 2019",
-		bullets: ["Built internal tools in **VB.NET** and **C#**, gaining foundational .NET training"],
+		bullets: ["Built internal tools in VB.NET and C# to address operational needs, gaining foundational .NET development training"],
 	},
 ];
 
@@ -316,8 +316,7 @@ export const EXPERIENCE: ExperienceItem[] = [
 const CERT_FILES = import.meta.glob<string>("../assets/certifications/*", { eager: true, import: "default" });
 
 /** Resolve a certificate image by filename; null → placeholder tile renders. */
-export const certImage = (file?: string): string | null =>
-	(file && CERT_FILES[`../assets/certifications/${file}`]) || null;
+export const certImage = (file?: string): string | null => (file && CERT_FILES[`../assets/certifications/${file}`]) || null;
 
 export interface Certification {
 	title: string;
@@ -328,14 +327,15 @@ export interface Certification {
 	file?: string;
 }
 
-/* ⚠ PLACEHOLDER ENTRIES — swap in real certificates + attach scans before launch. */
 export const CERTIFICATIONS: Certification[] = [
-	{ title: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", date: "Mar 2025" },
-	{ title: "Meta Front-End Developer", issuer: "Coursera · Meta", date: "Jan 2025" },
-	{ title: "React — The Complete Guide", issuer: "Udemy", date: "Nov 2024" },
-	{ title: "Docker Foundations", issuer: "Docker Inc.", date: "Aug 2024" },
-	{ title: "SQL Advanced Certificate", issuer: "HackerRank", date: "Jun 2024" },
-	{ title: "UI/UX Design Fundamentals", issuer: "Coursera · Google", date: "Feb 2023" },
+	{ title: "Google Project Management", issuer: "Coursera · Google", date: "Dec 2025", file: "google project management.png" },
+	{ title: "Advanced React", issuer: "Coursera · Meta", date: "Jun 2024", file: "meta advanced react.png" },
+	{ title: "AWS Cloud Technical Essentials", issuer: "Coursera · AWS", date: "Jun 2024", file: "aws.png" },
+	{ title: "Principles of UX/UI Design", issuer: "Coursera · Meta", date: "Jun 2024", file: "ui-ux.png" },
+	{ title: "Introduction to Docker", issuer: "Coursera · Google Cloud", date: "Jul 2024", file: "docker.png" },
+	{ title: "Mastering Laravel Framework and PHP", issuer: "Coursera · Board Infinity", date: "Jun 2024", file: "laravel.png" },
+	{ title: "Developing Back-End Apps with Node.js and Express", issuer: "Coursera · IBM", date: "Jul 2024", file: "node and express.png" },
+	{ title: "Introduction to Google SEO", issuer: "Coursera · UC Davis", date: "Jun 2024", file: "intro to seo.png" },
 ];
 
 /* ── Hero terminal script ───────────────────────────────────────── */
